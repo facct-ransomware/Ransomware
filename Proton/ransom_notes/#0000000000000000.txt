@@ -1,0 +1,28 @@
+			  ~~~ Proton ~~~			
+>>> What happened?
+    We encrypted and stolen all of your files.
+    We use AES and ECC algorithms.
+    Nobody can recover your files without our decryption service.
+
+>>> How to recover?
+    We are not a politically motivated group and we want nothing more than money.
+    If you pay, we will provide you with decryption software and destroy the stolen data.
+
+>>> What guarantees?
+    You can send us an unimportant file less than 1 MG, We decrypt it as guarantee.
+    If we do not send you the decryption software or delete stolen data, no one will pay us in future so we will keep our promise.
+
+>>> How to contact us?
+   Our email address: filesupport@airmail.cc
+   In case of no answer within 24 hours, contact to this email: proton@onionmail.org
+   Write your personal ID in the subject of the email.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>> Your personal ID: 0000000000000000 <<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>> Warnings!
+  - Do not go to recovery companies, they are just middlemen who will make money off you and cheat you.
+   They secretly negotiate with us, buy decryption software and will sell it to you many times more expensive or they will simply scam you.
+  - Do not hesitate for a long time. The faster you pay, the lower the price.
+  - Do not delete or modify encrypted files, it will lead to problems with decryption of files.
