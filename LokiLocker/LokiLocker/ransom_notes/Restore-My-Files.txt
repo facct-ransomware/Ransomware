@@ -1,0 +1,6 @@
+!!!All of your files are encrypted!!!
+To decrypt them send e-mail to this address: attacker1@mail
+In case of no answer in 24h, send e-mail to this address: attacker2@mail
+All your files will be lost on Wednesday, July 5, 2023 5:41:31 PM.
+Your SYSTEM ID : BADC0C0A
+!!!Deleting "Cpriv.Loki" causes permanent data loss.
