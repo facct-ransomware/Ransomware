@@ -22,5 +22,5 @@
 		
 		Files should not contain valuable information.(databases,backups) !
 		
-		Compress the file with zip or 7zip or rar compression programs and send it to us!AAD18994
+		Compress the file with zip or 7zip or rar compression programs and send it to us!BADC0C0A
 !!!Deleting "Cpriv.Shuriken" causes permanent data loss.
