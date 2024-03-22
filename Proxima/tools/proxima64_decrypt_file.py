@@ -43,13 +43,18 @@ RANSOM_EXTS = [
     '.Gomez',
     '.Jarjets',
     '.Off',
+    '.Daniel',
+    '.Xray',
+    '.Tisak',
+    '.SNet',
+    '.Jack',
+    '.Sergey',
     '.Cylance',      # Cylance (2023-03-24)
     '.uploaded',
     '.transferred',
     '.Antoni',
     '.Sezar',
     '.sysinfo',
-    '.Daniel',
 ]
 
 # BTC (2023-06-12)
