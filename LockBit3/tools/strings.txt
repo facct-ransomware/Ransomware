@@ -45,6 +45,7 @@ twelve.exe
 shadow.exe
 comet.exe
 ds.exe
+mordor.exe
 386
 adv
 ani
