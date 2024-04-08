@@ -7,7 +7,7 @@ rule RCRU64
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T."
+        company = "F.A.C.C.T. LLC"
         family = "ransomware.rcru64.windows"
         description = "RCRU64 ransomware Windows payload"
         severity = 10
