@@ -7,7 +7,7 @@ rule LockBit3
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T."
+        company = "F.A.C.C.T. LLC"
         family = "ransomware.lockbit3.windows"
         description = "BlackMatter/LockBit3 ransomware Windows payload"
         severity = 10
