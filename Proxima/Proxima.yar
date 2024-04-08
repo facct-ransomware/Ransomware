@@ -7,6 +7,7 @@ rule Proxima
 {
     meta:
         author = "rivitna"
+        company = "F.A.C.C.T."
         family = "ransomware.proxima.windows"
         description = "Proxima ransomware Windows payload"
         severity = 10
