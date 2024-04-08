@@ -35,7 +35,7 @@ rule Muliaka_ESXi
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T."
+        company = "F.A.C.C.T. LLC"
         family = "ransomware.muliaka.esxi"
         description = "Muliaka ransomware ESXi"
         severity = 10
