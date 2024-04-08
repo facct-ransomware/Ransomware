@@ -9,7 +9,7 @@ rule LokiLocker_obfuscation
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T."
+        company = "F.A.C.C.T. LLC"
         family = "ransomware.lokilocker"
         description = "LokiLocker/BlackBit ransomware Windows"
         severity = 7
