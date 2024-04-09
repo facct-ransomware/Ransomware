@@ -1,4 +1,26 @@
-# © 2024 F.A.C.C.T. LLC. All Rights Reserved.
+# MIT License
+#
+# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# https://github.com/rivitna
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files
+# (the "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit
+# persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
 
 import sys
 import io
@@ -52,7 +74,7 @@ FIELDS = [
     ( '',                     12, FIELD_WSTR,    True ),
     ( '',                     40, FIELD_WSTR,    True ),
     ( '',                    159, FIELD_STR,     True ),
-    ( '',                      4, FIELD_UI32,    False ),
+    ( 'runas_count',           4, FIELD_UI32,    False ),
     ( '',                    561, FIELD_UNKNOWN, False ),
     ( 'cmds',                 66, FIELD_STR,     True ),
     ( '',                   4096, FIELD_WSTR,    True ),
@@ -206,6 +228,8 @@ for fld_name, fld_size, fld_type, fld_enc in FIELDS:
             val = get_strz(cfg_data, pos, fld_size)
         elif fld_type == FIELD_WSTR:
             val = get_wstrz(cfg_data, pos, fld_size)
+        elif fld_type == FIELD_UI32:
+            val, = struct.unpack_from('<L', cfg_data, pos)
         fields[fld_name] = val
 
     pos += fld_size
