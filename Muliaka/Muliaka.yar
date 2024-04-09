@@ -7,7 +7,6 @@ rule Muliaka_loader
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T. LLC"
         family = "ransomware.muliaka.loader"
         description = "Muliaka ransomware Windows loader"
         severity = 10
