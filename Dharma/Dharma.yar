@@ -7,7 +7,6 @@ rule Dharma
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T. LLC"
         family = "ransomware.dharma"
         description = "Dharma ransomware Windows"
         severity = 10
