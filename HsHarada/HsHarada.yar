@@ -7,7 +7,6 @@ rule HsHarada
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T. LLC"
         family = "ransomware.hsharada"
         description = "HsHarada ransomware Windows payload"
         severity = 10
