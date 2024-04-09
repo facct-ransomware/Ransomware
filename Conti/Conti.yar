@@ -7,7 +7,6 @@ rule Conti
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T. LLC"
         family = "ransomware.conti.windows"
         description = "Conti 2 and 3 ransomware Windows payload"
         severity = 10
