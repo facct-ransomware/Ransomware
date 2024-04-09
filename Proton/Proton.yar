@@ -7,7 +7,6 @@ rule Proton
 {
     meta:
         author = "rivitna"
-        company = "F.A.C.C.T. LLC"
         family = "ransomware.proton"
         description = "Proton ransomware Windows payload"
         severity = 10
