@@ -85,7 +85,8 @@ laminan@keemail.me
 
 BlackShadow
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
-.Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack
+.Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack, .Sergey,
+.phoenix, .Hercul
 Black.Shadow2000@onionmail.org
 Black.Shadow2000@cyberfear.com
 Black.Store2000@onionmail.org
