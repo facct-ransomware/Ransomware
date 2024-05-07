@@ -53,6 +53,7 @@ Facefish
 /usr/lib64/libs.so
 
 sliver
+/sbin/ip4tables
 /usr/bin/elma-healthcheck
 /usr/bin/grub-mount-512crypt2
 /usr/bin/grub-mount-sha512crypt
