@@ -53,8 +53,8 @@ Facefish
 /usr/lib64/libs.so
 
 sliver
-traceroute4
-sshd-watchtower
+/usr/sbin/traceroute4
+/usr/sbin/sshd-watchtower
 /usr/sbin/sshd-syslog
 /usr/sbin/grub2-config
 /usr/sbin/wpa_supplicant_legacy
