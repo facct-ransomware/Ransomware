@@ -53,11 +53,43 @@ Facefish
 /usr/lib64/libs.so
 
 sliver
-/usr/sbin/traceroute4
-/usr/sbin/sshd-watchtower
-/usr/sbin/sshd-syslog
+/usr/bin/elma-healthcheck
+/usr/bin/grub-mount-512crypt2
+/usr/bin/grub-mount-sha512crypt
+/usr/bin/logrotate_multicheck
+/usr/bin/mount-fs256-ng
+/usr/bin/sha512crypt-blade
+/usr/bin/ssh-keymap
+/usr/bin/vmware-alias-export
+/usr/lib/udisks2/udisks2-expand
+/usr/sbin/grub-xfs-crypt512
 /usr/sbin/grub2-config
+/usr/sbin/grub2-config-helper
+/usr/sbin/healthcheck
+/usr/sbin/rsetlogd
+/usr/sbin/saslpasswd3
+/usr/sbin/ssh-keymap
+/usr/sbin/ssh-keymap-xfs
+/usr/sbin/ssh_cache
+/usr/sbin/sshd-ext
+/usr/sbin/sshd-keyflow
+/usr/sbin/sshd-syslog
+/usr/sbin/sshd-watch
+/usr/sbin/sshd-watchtower
+/usr/sbin/sshd-xevents
+/usr/sbin/sshd_cache
+/usr/sbin/traceroute4
+/usr/sbin/zabbixd
 /usr/sbin/wpa_supplicant_legacy
+C:\Program Files\PostgreSQL\12\data\b.exe
+C:\Program Files\RustDesk\RustDesk.exe
+C:\Program Files\VMWare\temp\svchost.exe
+C:\Users\john\Desktop\MsoEV\MsoEV.exe
+C:\Users\user\Desktop\MINIMAL_SAFETY.exe
+C:\Windows\update.exe
+c:\Users\Public\Documents\upd.exe
+c:\windows\temp\dism.exe
+c:\windows\temp\svchost.exe
 
 resocks
 grub2-config-helper
