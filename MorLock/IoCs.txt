@@ -21,6 +21,7 @@ Sliver
 3899f080e2d6069c2554393da081e712d22556ff852125d35b38159cf2baac00
 81a08c01170641f08236adcbf866c82de6bcb9e993bca8643e35e75be066f0b9
 9136e00ffe1367972d855b2f1220e8f81e68b39554a47670816a1f6523fb42a8
+a9076ae61b6019801289b0ae8d8714f902491f3f988bbfc71329f763b63a3256
 
 Facefish
 4f78cc1c81dde9893ccdb4696cf42e17fa67abf2aef2faecdeb4245ab33a04ec
@@ -30,6 +31,9 @@ Facefish
 resocks
 d05ea5197a854415868f0aef1d67cb18aadce3fc1049d21efdf137ce79d82ec1
 57e564a7a25e9dbade7037d1127e5b56f5afa840641c50c4388de861cd588864
+ed2fa9ec8013a14cc60466884f5b09fe1de652176e1f2544b8599ce5128c4c82
+615f660a4153bbf3f57f02f8081ff500ad204b1b673564e0da9598a6360c2d89
+d8e02b7c19b616d783d7018ff23874078d8d8d2489fb74a75298a265744717ea
 
 Godzilla web-shell
 3d419aaa79cbcadb3a305ab448dd71ac5f4c59918cddacc36cffd823072b8ea5
@@ -93,8 +97,21 @@ c:\windows\temp\dism.exe
 c:\windows\temp\svchost.exe
 
 resocks
+irdbalance
 grub2-config-helper
+grub2-manager
+mattermost-healthcheck
+mgmt-healthcheck
+mm-healthcheck
+network-tracecon
 rsyslogd-health
+ssh-check
+update-ubuntu
+xfs_spacecheck
+zabbix-agent3
+zabbixd_client4
+zpamctl
+svchost.exe
 
 Godzilla web-shell
 Startup1_3.jsp
