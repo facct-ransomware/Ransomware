@@ -23,6 +23,7 @@ Sliver
 9136e00ffe1367972d855b2f1220e8f81e68b39554a47670816a1f6523fb42a8
 
 Facefish
+4f78cc1c81dde9893ccdb4696cf42e17fa67abf2aef2faecdeb4245ab33a04ec
 2c0bbfcad714243a11d0d059b6977af7851c7387ef7b3e9948a5d30075b34f2b
 7db4db23f01e1604f1be05c09e431623de14a1ec1957cf052ea71be1c4f5ce5b
 
@@ -95,6 +96,7 @@ Windows service name
 Win32_L2NTO
 
 
+http://linuxpythonupdate.com
 http://easylink.lol
 195.2.76.120
 94.103.84.207
