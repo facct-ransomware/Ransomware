@@ -60,9 +60,6 @@ e_esxi.out
 /usr/sbin/nas
 /usr/sbin/e_nas
 
-Facefish
-/usr/lib64/libs.so
-
 sliver
 /sbin/ip4tables
 /usr/bin/elma-healthcheck
@@ -102,6 +99,9 @@ C:\Windows\update.exe
 c:\Users\Public\Documents\upd.exe
 c:\windows\temp\dism.exe
 c:\windows\temp\svchost.exe
+
+Facefish
+/usr/lib64/libs.so
 
 resocks
 irdbalance
