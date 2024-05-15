@@ -9,6 +9,7 @@ a54519b7530039b9fba9a4143bf549b67048f441bbebf9f8d5cff1e539752189
 de9aa8830d4c8eed0c748441128895fdfc31724fd41ba4e42d0207e5f122525e
 cfcbe44fb4e7688cefba54b2fd06b348c254307869d4fcd55abc69c65a2ff743
 dec147d7628d4e3479bc0ff31413621fb4b1b64a618469a9402a42816650f92b
+49ae3df39fb417bbe85a37d89bed73b7a02846695ff5bea20274aa981c12faf1
 
 Babuk (ESXi, NAS)
 bcfbd324f17e2e9a5daee609ee87c2298fe2ed9567596df2cee31f4ef2ddb03a
@@ -22,6 +23,7 @@ Sliver
 81a08c01170641f08236adcbf866c82de6bcb9e993bca8643e35e75be066f0b9
 9136e00ffe1367972d855b2f1220e8f81e68b39554a47670816a1f6523fb42a8
 a9076ae61b6019801289b0ae8d8714f902491f3f988bbfc71329f763b63a3256
+8a9b44ebc0387b0abc3e7e00dcd928613d4179e92df988bff7d86aab926599d0
 
 Facefish
 4f78cc1c81dde9893ccdb4696cf42e17fa67abf2aef2faecdeb4245ab33a04ec
@@ -93,8 +95,8 @@ sliver
 C:\Program Files\PostgreSQL\12\data\b.exe
 C:\Program Files\RustDesk\RustDesk.exe
 C:\Program Files\VMWare\temp\svchost.exe
-C:\Users\john\Desktop\MsoEV\MsoEV.exe
-C:\Users\user\Desktop\MINIMAL_SAFETY.exe
+C:\Users\*\Desktop\MsoEV\MsoEV.exe
+C:\Users\*\Desktop\MINIMAL_SAFETY.exe
 C:\Windows\update.exe
 c:\Users\Public\Documents\upd.exe
 c:\windows\temp\dism.exe
