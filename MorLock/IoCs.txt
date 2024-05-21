@@ -166,6 +166,9 @@ Win32_L2NTO
 
 http://linuxpythonupdate.com
 http://easylink.lol
+get.upd-rkn.net
+bot.upd-rkn.net
+128.140.87.153
 195.2.76.120
 94.103.84.207
 188.143.235.176
