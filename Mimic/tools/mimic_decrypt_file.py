@@ -37,8 +37,6 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
 RANSOM_EXT = '.xxxxxxxxxx'
 
-ENC_PERCENT = 1
-
 
 # Encryption marker
 ENC_MARKER = b'iskey\0'
@@ -134,7 +132,10 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
                               METADATA_ENCMARKER_SIZE]
         marker = chacha20_decrypt(enc_m_data, metadata_key)
         if marker != ENC_MARKER:
+            print('encryption marker: failed')
             return False
+
+        print('encryption marker: OK')
 
         # Decrypt data encryption key
         enc_k_data = metadata[METADATA_ENCKEY_POS:
@@ -146,21 +147,26 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
                                METADATA_FILESIZE_POS + 8]
         fs_data = chacha20_decrypt(enc_fs_data, metadata_key)
         orig_file_size = int.from_bytes(fs_data, byteorder='little')
+        print('original file size:', orig_file_size)
 
         # Decrypt encryption percent
         enc_p_data = metadata[METADATA_ENCPERCENT_POS:
                               METADATA_ENCPERCENT_POS + 1]
         p_data = chacha20_decrypt(enc_p_data, metadata_key)
         enc_percent = p_data[0]
+        print('encryption percent:', enc_percent)
 
         # Decrypt unk1
         enc_u_data = metadata[METADATA_UNK1_POS : METADATA_UNK1_POS + 1]
         u_data = chacha20_decrypt(enc_u_data, metadata_key)
         unk1 = u_data[0]
+        print('unknown: %02Xh' % unk1)
 
         if orig_file_size < MIN_BIG_FILE_SIZE:
 
             # Full
+            print('mode: full')
+
             pos = 0
 
             while pos < orig_file_size:
@@ -183,6 +189,7 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
         else:
 
             # Part
+            print('mode: part')
 
             # Decrypt first block
             f.seek(0)
@@ -201,7 +208,7 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
             n = 2 * (rem_size >> 24) + 1
             num_blocks = int(((int(n / 0.6) - n) + 1) * (x * 1.4) + n)
             part_size = rem_size // num_blocks
-            enc_part_size = (part_size * ENC_PERCENT) // 100
+            enc_part_size = (part_size * enc_percent) // 100
             block_size1 = int(enc_part_size * 0.85)
             block_size2 = 2 * enc_part_size - block_size1
             if block_size2 > part_size:
