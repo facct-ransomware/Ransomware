@@ -61,9 +61,12 @@ ENCODED_KEY_LEN = 43
 METADATA_PUBKEY_POS = 0
 METADATA_ENCKEY_POS = METADATA_PUBKEY_POS + X25519_KEY_SIZE
 METADATA_FILESIZE_POS = METADATA_ENCKEY_POS + CHACHA_KEY_SIZE
-METADATA_ENCPERCENT_POS = METADATA_FILESIZE_POS + 8
-METADATA_UNK1_POS = METADATA_ENCPERCENT_POS + 1
-METADATA_ENCMARKER_POS = METADATA_UNK1_POS + 1
+METADATA_FILESIZE_SIZE = 8
+METADATA_ENCPERCENT_POS = METADATA_FILESIZE_POS + METADATA_FILESIZE_SIZE
+METADATA_ENCPERCENT_SIZE = 1
+METADATA_VER_POS = METADATA_ENCPERCENT_POS + METADATA_ENCPERCENT_SIZE
+METADATA_VER_SIZE = 1
+METADATA_ENCMARKER_POS = METADATA_VER_POS + METADATA_VER_SIZE
 METADATA_ENCMARKER_SIZE = len(ENC_MARKER)
 METADATA_SIZE = METADATA_ENCMARKER_POS + METADATA_ENCMARKER_SIZE
 
@@ -144,28 +147,31 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
 
         # Decrypt original file size
         enc_fs_data = metadata[METADATA_FILESIZE_POS:
-                               METADATA_FILESIZE_POS + 8]
+                               METADATA_FILESIZE_POS +
+                               METADATA_FILESIZE_SIZE]
         fs_data = chacha20_decrypt(enc_fs_data, metadata_key)
         orig_file_size = int.from_bytes(fs_data, byteorder='little')
         print('original file size:', orig_file_size)
 
         # Decrypt encryption percent
         enc_p_data = metadata[METADATA_ENCPERCENT_POS:
-                              METADATA_ENCPERCENT_POS + 1]
+                              METADATA_ENCPERCENT_POS +
+                              METADATA_ENCPERCENT_SIZE]
         p_data = chacha20_decrypt(enc_p_data, metadata_key)
         enc_percent = p_data[0]
         print('encryption percent:', enc_percent)
 
-        # Decrypt unk1
-        enc_u_data = metadata[METADATA_UNK1_POS : METADATA_UNK1_POS + 1]
-        u_data = chacha20_decrypt(enc_u_data, metadata_key)
-        unk1 = u_data[0]
-        print('unknown: %02Xh' % unk1)
+        # Decrypt version
+        enc_ver_data = metadata[METADATA_VER_POS:
+                                METADATA_VER_POS + METADATA_VER_SIZE]
+        ver_data = chacha20_decrypt(enc_ver_data, metadata_key)
+        ver = ver_data[0]
+        print('version: %02Xh' % ver)
 
         if orig_file_size < MIN_BIG_FILE_SIZE:
 
-            # Full
-            print('mode: full')
+            # Solid
+            print('mode: solid')
 
             pos = 0
 
