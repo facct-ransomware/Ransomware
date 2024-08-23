@@ -58,7 +58,12 @@ ENCODED_KEY_LEN = 43
 
 
 # Metadata
-METADATA_PUBKEY_POS = 0
+METADATA_PERCFORFILES_POS = 0
+METADATA_PERCFORFILES_SIZE = 1
+METADATA_FOOTERSIZE_POS = (METADATA_PERCFORFILES_POS +
+                           METADATA_PERCFORFILES_SIZE)
+METADATA_FOOTERSIZE_SIZE = 1
+METADATA_PUBKEY_POS = METADATA_FOOTERSIZE_POS + METADATA_FOOTERSIZE_SIZE
 METADATA_ENCKEY_POS = METADATA_PUBKEY_POS + X25519_KEY_SIZE
 METADATA_FILESIZE_POS = METADATA_ENCKEY_POS + CHACHA_KEY_SIZE
 METADATA_FILESIZE_SIZE = 8
@@ -71,10 +76,11 @@ METADATA_ENCMARKER_SIZE = len(ENC_MARKER)
 METADATA_SIZE = METADATA_ENCMARKER_POS + METADATA_ENCMARKER_SIZE
 
 
-MIN_BIG_FILE_SIZE = 0x3200000
-
-ENC_BLOCK_SIZE1 = 0x100000
-ENC_BLOCK_SIZE2 = 0x800000
+V2_PART_MIN_FILE_SIZE = 0x3200000
+V3_MIN_BIG_FILE_SIZE = 0xA00000
+ENC_BLOCK_SIZE1 = 0x80000
+ENC_BLOCK_SIZE2 = 0x100000
+MAX_ENC_BLOCK_SIZE = 0x800000
 
 
 def derive_encryption_key(priv_key_data: bytes,
@@ -166,9 +172,36 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
                                 METADATA_VER_POS + METADATA_VER_SIZE]
         ver_data = chacha20_decrypt(enc_ver_data, metadata_key)
         ver = ver_data[0]
-        print('version: %02Xh' % ver)
+        print('version:', chr(ver))
 
-        if orig_file_size < MIN_BIG_FILE_SIZE:
+        if ver >= 0x33:
+
+            # Version 3 or above
+
+            # Decrypt footer size
+            enc_fts_data = metadata[METADATA_FOOTERSIZE_POS:
+                                    METADATA_FOOTERSIZE_POS +
+                                    METADATA_FOOTERSIZE_SIZE]
+            fts_data = chacha20_decrypt(enc_fts_data, metadata_key)
+            footer_size = fts_data[0]
+            print('footer size:', footer_size)
+
+            # Decrypt percent for files [MB]
+            enc_pff_data = metadata[METADATA_PERCFORFILES_POS:
+                                    METADATA_PERCFORFILES_POS +
+                                    METADATA_PERCFORFILES_SIZE]
+            pff_data = chacha20_decrypt(enc_pff_data, metadata_key)
+            perc_for_files = pff_data[0]
+            print('% for files [MB]:', perc_for_files)
+
+            part_min_file_size = perc_for_files << 20
+
+        else:
+
+            # Version 1, 2
+            part_min_file_size = V2_PART_MIN_FILE_SIZE
+
+        if orig_file_size < part_min_file_size:
 
             # Solid
             print('mode: solid')
@@ -178,7 +211,7 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
             while pos < orig_file_size:
 
                 # Decrypt block
-                size = min(ENC_BLOCK_SIZE2, orig_file_size - pos)
+                size = min(MAX_ENC_BLOCK_SIZE, orig_file_size - pos)
 
                 f.seek(pos)
                 enc_data = f.read(size)
@@ -197,9 +230,14 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
             # Part
             print('mode: part')
 
+            if (ver >= 0x33) and (orig_file_size < V3_MIN_BIG_FILE_SIZE):
+                block_size1 = ENC_BLOCK_SIZE1
+            else:
+                block_size1 = ENC_BLOCK_SIZE2
+
             # Decrypt first block
             f.seek(0)
-            enc_data = f.read(ENC_BLOCK_SIZE1)
+            enc_data = f.read(block_size1)
 
             data = chacha20_decrypt(enc_data, key)
 
@@ -210,16 +248,16 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
             key_b64 = base64.urlsafe_b64encode(key)[:ENCODED_KEY_LEN]
             x = get_checksum(key_b64)
 
-            rem_size = orig_file_size - 2 * ENC_BLOCK_SIZE1
+            rem_size = orig_file_size - 2 * block_size1
             n = 2 * (rem_size >> 24) + 1
             num_blocks = int(((int(n / 0.6) - n) + 1) * (x * 1.4) + n)
             part_size = rem_size // num_blocks
             enc_part_size = (part_size * enc_percent) // 100
-            block_size1 = int(enc_part_size * 0.85)
-            block_size2 = 2 * enc_part_size - block_size1
-            if block_size2 > part_size:
-                block_size2 = part_size
-                block_size1 = 2 * enc_part_size - part_size
+            min_block_size = int(enc_part_size * 0.85)
+            max_block_size = 2 * enc_part_size - min_block_size
+            if max_block_size > part_size:
+                max_block_size = part_size
+                min_block_size = 2 * enc_part_size - part_size
 
             for i in range(num_blocks):
 
@@ -230,10 +268,10 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
                 if j <= 0:
                     j = 1
                 x = get_checksum(key_b64[ENCODED_KEY_LEN - j:]) * 1.4
-                size = min(ENC_BLOCK_SIZE2,
-                           int((block_size2 - block_size1 + 1) * x +
-                               block_size1))
-                pos = int(part_size * i + ENC_BLOCK_SIZE1 +
+                size = min(MAX_ENC_BLOCK_SIZE,
+                           int(min_block_size +
+                               (max_block_size - min_block_size + 1) * x))
+                pos = int(part_size * i + block_size1 +
                           x * (part_size - size + 1))
                 size = min(size, orig_file_size - pos)
 
@@ -248,9 +286,9 @@ def decrypt_file(filename: str, priv_key_data: bytes) -> bool:
                 f.write(data)
 
             # Decrypt last block
-            pos = orig_file_size - ENC_BLOCK_SIZE1
+            pos = orig_file_size - block_size1
             f.seek(pos)
-            enc_data = f.read(ENC_BLOCK_SIZE1)
+            enc_data = f.read(block_size1)
 
             data = chacha20_decrypt(enc_data, key)
 
