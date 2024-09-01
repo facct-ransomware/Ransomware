@@ -57,8 +57,8 @@ CHACHA_NONCE_SIZE = 8
 SETTINGS_SIZE = 3
 
 METADATA1_MARKER_SIZE = 4
-METADATA1_UNK1_SIZE = 4
-METADATA1_ENCDATA_POS = METADATA1_MARKER_SIZE + METADATA1_UNK1_SIZE
+METADATA1_SKEYINDEX_SIZE = 4
+METADATA1_ENCDATA_POS = METADATA1_MARKER_SIZE + METADATA1_SKEYINDEX_SIZE
 
 METADATA3_SIZE = CHACHA_KEY_SIZE + CHACHA_NONCE_SIZE + SETTINGS_SIZE
 METADATA2_SIZE = METADATA3_SIZE + X25519_KEY_SIZE
@@ -107,11 +107,11 @@ def decrypt_file(filename: str, srsa_priv_key_data: bytes,
         # Read metadata
         metadata1 = f.read(metadata1_size)
 
-        marker, unk1 = struct.unpack_from('<2L', metadata1, 0)
+        marker, skey_index = struct.unpack_from('<2L', metadata1, 0)
 
         print('metadata size:', metadata1_size)
         print('marker: %08X' % marker)
-        print('unknown 1:', unk1)
+        print('session key index:', skey_index)
 
         # Decrypt metadata (RSA OAEP)
         enc_metadata2 = metadata1[METADATA1_ENCDATA_POS:
