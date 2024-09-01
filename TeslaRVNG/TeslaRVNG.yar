@@ -50,7 +50,7 @@ rule TeslaRVNG
     condition:
         ((uint16(0) == 0x5A4D) and (uint32(uint32(0x3C)) == 0x00004550)) and
         (
-            ((2 of ($h*)) and (5 of ($s*))) or
+            ((1 of ($h*)) and (5 of ($s*))) or
             (10 of ($s*))
         )
 }
