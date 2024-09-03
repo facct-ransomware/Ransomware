@@ -59,9 +59,14 @@ def is_file_encrypted(filename: str) -> bool:
 
     with io.open(filename, 'rb') as f:
         # Read marker
-        marker = int.from_bytes(f.read(4), byteorder='little')
+        marker1 = int.from_bytes(f.read(4), byteorder='little')
+        if marker1 != ENC_MARKER1:
+            return False
 
-    return (marker == ENC_MARKER1)
+        f.seek(-len(ENC_MARKER2), 2)
+        marker2 = f.read(len(ENC_MARKER2))
+
+    return (marker2 == ENC_MARKER2)
 
 
 def decrypt_file(filename: str,
