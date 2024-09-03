@@ -125,20 +125,18 @@ def decrypt_file(filename: str,
         # Decrypt metadata 2
         metadata2 = secles_crypt.chacha20_decrypt(enc_metadata2,
                                                   metadata_key, metadata_n)
-
+        # Parse metadata 2
         key = metadata2[:secles_crypt.CHACHA_KEY_SIZE]
         n = metadata2[secles_crypt.CHACHA_KEY_SIZE:
                       secles_crypt.CHACHA_KEYDATA_SIZE]
-
-        skip_blocks = metadata2[secles_crypt.CHACHA_KEYDATA_SIZE]
-        block_size_64k = metadata2[secles_crypt.CHACHA_KEYDATA_SIZE + 1]
-        block_size_4g = metadata2[secles_crypt.CHACHA_KEYDATA_SIZE + 2]
+        skip_blocks, block_size_64k = \
+            struct.unpack_from('<BH', metadata2,
+                               secles_crypt.CHACHA_KEYDATA_SIZE)
 
         print('skip blocks:', skip_blocks)
         print('block size [64 KB]:', block_size_64k)
-        print('block size [4 GB]:', block_size_4g)
 
-        block_size = ((block_size_4g << 16) | block_size_64k) << 16
+        block_size = block_size_64k << 16
         block_space = 0
 
         if skip_blocks != 0:
