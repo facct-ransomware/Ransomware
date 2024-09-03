@@ -27,6 +27,7 @@ import io
 import os
 import errno
 import struct
+import hashlib
 
 
 # Configuration data file position and size
@@ -244,6 +245,8 @@ print('cfg data saved to file.')
 # RSA public key
 rsa_n = fields.get('rsa_n')
 if rsa_n:
+    rsa_n_sha1 = hashlib.sha1(rsa_n).hexdigest()
+    print('RSA modulus (n) SHA-1:', rsa_n_sha1)
     save_data_to_file(dest_dir + 'rsa_n.bin', rsa_n)
     print('RSA modulus (n) saved to file.')
 rsa_e = fields.get('rsa_e')
