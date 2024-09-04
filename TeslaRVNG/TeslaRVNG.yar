@@ -35,12 +35,13 @@ rule TeslaRVNG
         $s19 = "\x00-irs\x00" wide
         $s20 = "\x00chacha faild\x00" wide
         $s21 = "rngerror ,disabable av\x00" wide
-        $s22 = "will rename each file after encrypted " wide
-        $s23 = "ont shutdown machine after encryption " wide
-        $s24 = "SCHTASKS /create /tn logg /sc MINUTE /mo 10 /tr \"c:\\windows\\logg.bat\"" wide
-        $s25 = "will stop encrypting and exit " wide
-        $s26 = " extesions were exclueded and wont be encrypted" wide
-        $s27 = "autospread (ingnoring avs) enabled , file name in target machine will be c:\\windows\\" wide
+        $s22 = "antoher process is already running, therminating\x00" wide
+        $s23 = "will rename each file after encrypted " wide
+        $s24 = "ont shutdown machine after encryption " wide
+        $s25 = "SCHTASKS /create /tn logg /sc MINUTE /mo 10 /tr \"c:\\windows\\logg.bat\"" wide
+        $s26 = "will stop encrypting and exit " wide
+        $s27 = " extesions were exclueded and wont be encrypted" wide
+        $s28 = "autospread (ingnoring avs) enabled , file name in target machine will be c:\\windows\\" wide
 
         $h0 = { BA 03 0D 00 00 41 B8 07 0F 01 00 49 89 }
         $h1 = { C6 44 3? 02 7F 66 C7 04 3? DC 2D }
