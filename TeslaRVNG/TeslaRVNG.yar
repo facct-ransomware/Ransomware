@@ -23,9 +23,9 @@ rule TeslaRVNG
         $s7 = ":\\windows\\logg.bat\x00" wide
         $s8 = " \x0D\x0AHard Disk Used Sizes::\x00" ascii
         $s9 = "\x0D\x0AList Runing Process \x0D\x0A\x00" ascii
-        $s10 = "Invaild Handle in log saving \x00" wide
-        $s11 = "skiping mode enabled 1/\x00" wide
-        $s12 = "defering rest of  win partion \x00" wide
+        $s10 = "Invaild Handle in log saving " wide
+        $s11 = "skiping mode enabled 1/" wide
+        $s12 = "defering rest of  win partion " wide
         $s13 = "My Sample Service: ServiceMain: SetServiceStatus returned error\x00" wide
         $s14 = "readchedEnd \x0D\x0A doing final jobs" wide
         $s15 = "\x00noting on network \x00" wide
@@ -36,8 +36,8 @@ rule TeslaRVNG
         $s20 = "{557cf401-1a04-11d3-9a73-0000f81ef32e}\x00" wide
         $s21 = "\x00-irs\x00" wide
         $s22 = "\x00chacha faild\x00" wide
-        $s23 = "rngerror ,disabable av\x00" wide
-        $s24 = "antoher process is already running, therminating\x00" wide
+        $s23 = "rngerror ,disabable av" wide
+        $s24 = "antoher process is already running, therminating" wide
         $s25 = "will rename each file after encrypted " wide
         $s26 = "ont shutdown machine after encryption " wide
         $s27 = "SCHTASKS /create /tn logg /sc MINUTE /mo 10 /tr \"c:\\windows\\logg.bat\"" wide
