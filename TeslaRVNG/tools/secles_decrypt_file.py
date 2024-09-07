@@ -250,5 +250,6 @@ shutil.copy(filename, new_filename)
 
 # Decrypt file
 if not decrypt_file(new_filename, s_rsa_priv_key_data, s_ecc_priv_key_data):
+    os.remove(new_filename)
     print('Error: Failed to decrypt file')
     sys.exit(1)
