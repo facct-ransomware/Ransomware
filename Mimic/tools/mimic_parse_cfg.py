@@ -121,8 +121,8 @@ SETTINGS_V43 = [
     SETTING_LOG_LEVEL,
 ]
 
-# v6.3
-SETTINGS_V63 = [
+# v5.4, v6.3
+SETTINGS_V54 = [
     SETTING_WIPE_DRIVES,
     SETTING_PRIORITY_MODIFY,
     SETTING_ENCR_SHARE,
@@ -138,7 +138,7 @@ SETTINGS_V63 = [
     SETTING_DEL_LOG,
 ]
 
-# v7.0
+# v7.x
 SETTINGS_V70 = [
     SETTING_WIPE_DRIVES,
     SETTING_PRIORITY_MODIFY,
@@ -161,9 +161,9 @@ SETTINGS = {
   '4.0': SETTINGS_V40,
   '4.2': SETTINGS_V42,
   '4.3': SETTINGS_V43,
-  '5.4': SETTINGS_V63,
-  '6.3': SETTINGS_V63,
-  '7.0': SETTINGS_V70,
+  '5.4': SETTINGS_V54,
+  '6.3': SETTINGS_V54,
+  '7.x': SETTINGS_V70,
 }
 
 
@@ -418,6 +418,9 @@ def save_text_to_file(filename: str, s: str):
 #
 if not (2 <= len(sys.argv) <= 3):
     print('Usage:', sys.argv[0], 'filename [-v<VER>]')
+    print()
+    print('supported versions:', ', '.join(SETTINGS.keys()))
+    print('default version:', DEFAULT_VER)
     sys.exit(0)
 
 filename = sys.argv[1]
