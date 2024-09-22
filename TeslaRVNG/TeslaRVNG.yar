@@ -48,9 +48,9 @@ rule TeslaRVNG
         $s32 = " extesions were exclueded and wont be encrypted" wide
         $s33 = "autospread (ingnoring avs) enabled , file name in target machine will be c:\\windows\\" wide
 
-        $h0 = { BA 03 0D 00 00 41 B8 07 0F 01 00 49 89 }
-        $h1 = { C6 44 3? 02 7F 66 C7 04 3? DC 2D }
-        $h2 = { 00 00 FE E7 6B B3 0F 85 }
+        $h0 = { 00 3C 7E 00 3A 41 36 4E 00 5A 35 2C 00 }
+        $h1 = { BA 03 0D 00 00 41 B8 07 0F 01 00 49 89 }
+        $h2 = { C6 44 3? 02 ?F 66 C7 04 3? DC 2D }
         $h3 = { BA 4B 00 00 00 4D 89 ?? 41 B9 CC 05 00 00 E8 }
 
     condition:
