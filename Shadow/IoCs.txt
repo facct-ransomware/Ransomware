@@ -109,7 +109,7 @@ g3vjplfnlty3ha3h3wkn27wryhg2tgebfr2myr3qcd2py5luppa6zcid.onion
 %userprofile%\AppData\Local\Temp\17\Temp1_scn2.zip\Scanner.exe
 %userprofile%\AppData\Local\Temp\2\Advanced IP Scanner 2\advanced_ip_scanner.exe
 %userprofile%\AppData\Local\Temp\5\Advanced IP Scanner 2\advanced_ip_scanner.exe
-%userprofile%\AppData\Roaming\1C\1с.exe
+%userprofile%\AppData\Roaming\1C\1пїЅ.exe
 %userprofile%\AppData\Roaming\rclone
 %userprofile%\AppData\Roaming\rclone\rclone.conf
 %userprofile%\Desktop\69task
@@ -131,7 +131,7 @@ g3vjplfnlty3ha3h3wkn27wryhg2tgebfr2myr3qcd2py5luppa6zcid.onion
 %userprofile%\Desktop\socks32.exe
 %userprofile%\Desktop\SprintCSP.dll
 %userprofile%\Desktop\wmiexec.exe
-%userprofile%\Desktop\Документация\tweaks\adexplorer.exe
+%userprofile%\Desktop\Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ\tweaks\adexplorer.exe
 %USERPROFILE%\Downloads\Invoke-NinjaCopy (1).ps1
 %USERPROFILE%\Downloads\Invoke-NinjaCopy.ps1
 %userprofile%\Downloads\mimikatz_trunk.zip
