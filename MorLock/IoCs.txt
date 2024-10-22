@@ -172,7 +172,7 @@ C:\Users\*\Desktop\AnyDesk (1).exe
 StoneStop / PoorTry
 SOGFN.sys
 scmsa.sys
-ZLG7CRvkyU87rtFmxH.ex
+ZLG7CRvkyU87rtFmxH.exe
 VXuFx0GDfr.exe
 
 1C-Shell
