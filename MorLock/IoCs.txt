@@ -51,6 +51,14 @@ chisel
 Godzilla web-shell
 3d419aaa79cbcadb3a305ab448dd71ac5f4c59918cddacc36cffd823072b8ea5
 
+StoneStop / PoorTry
+bfcbc010432a89714349bd487555cec1ab5299a70f533a16d326a69e15e0c203
+dfb170fc73bef13ca40133318a182598ee0869f3d85904b9fcdc758719d4e032
+20acd2078d7e4ec439e81d53a4723fa2e33b4ffacb01d98b61d20a711289a05c
+
+1C-Shell
+864a73ea59882b6be2376678619c59915fedaa5ae96663ff78bda976418f43ab
+
 
 LockBit3
 C:\lock.exe
@@ -160,6 +168,15 @@ C:\Users\*\Documents\PingCastle.exe
 
 AnyDesk
 C:\Users\*\Desktop\AnyDesk (1).exe
+
+StoneStop / PoorTry
+SOGFN.sys
+scmsa.sys
+ZLG7CRvkyU87rtFmxH.ex
+VXuFx0GDfr.exe
+
+1C-Shell
+Обработка.epf
 
 
 Windows service name
