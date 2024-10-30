@@ -89,6 +89,7 @@ blackpanther@firemail.eu
 AkashNetwork@cyberfear.com
 AkashNetwork@tuta.io
 
+BlackShadow
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
 .Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack, .Sergey,
 .phoenix, .Hercul, .Dominik, .Elons, .Frank
