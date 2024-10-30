@@ -91,7 +91,7 @@ AkashNetwork@tuta.io
 
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
 .Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack, .Sergey,
-.phoenix, .Hercul, .Dominik, .Elons
+.phoenix, .Hercul, .Dominik, .Elons, .Frank
 Black.Shadow2000@onionmail.org
 Black.Shadow2000@cyberfear.com
 Black.Store2000@onionmail.org
@@ -122,6 +122,8 @@ Dominik2000@mailum.com
 Dominik2000@onionmail.org
 Elons1890@mailum.com
 Elons1890@cyberfear.com
+Frank1850@mailum.com
+Frank1850@onionmail.org
 
 .uploaded (RA Group ?)
 http://pa32ymaeu62yo5th5mraikgw5fcvznnsiiwti42carjliarodltmqcqd.onion
