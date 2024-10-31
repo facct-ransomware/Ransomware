@@ -35,7 +35,7 @@ import sosemanuk
 RANSOM_EXT = '.babyk'
 
 
-MAX_ENC_SIZE = 0x20000000
+MAX_ENC_SIZE = 0x20800000  # (0x20000000 // 0xA00000 + 1) * 0xA00000
 
 
 # x25519
@@ -121,5 +121,6 @@ shutil.copy(filename, new_filename)
 
 # Decrypt file
 if not decrypt_file(new_filename, priv_key_data):
+    os.remove(new_filename)
     print('Error: Failed to decrypt file')
     sys.exit(1)
