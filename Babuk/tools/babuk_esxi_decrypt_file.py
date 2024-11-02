@@ -35,7 +35,7 @@ import sosemanuk
 RANSOM_EXT = '.babyk'
 
 
-MAX_ENC_SIZE = 0x20800000  # (0x20000000 // 0xA00000 + 1) * 0xA00000
+MAX_ENC_SIZE = (0x20000000 // 0xA00000 + 1) * 0xA00000
 
 
 # x25519
