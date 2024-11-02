@@ -1,0 +1,9 @@
+Your data are stolen and encrypted. 
+	If you want to restore your files, you need pay ransom to get your files unlocked.
+	We will publish your files on onion websites if you don't pay the ransom.
+	If you want to avoid this attacking happened again, we can offer you the security report.
+	Contact us on tox.
+	Tox ID: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	Download it from here: https://tox.chat/clients.html.
+	If Tox doesn't work, send email to: [redacted]@onionmail.org.
+	By the way, don't turn off your servers if you see this note, or your files will be damaged forever.
