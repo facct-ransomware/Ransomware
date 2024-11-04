@@ -61,6 +61,10 @@ decryptionguy@memeware.net
 .telegram
 Telegram: @Zero_day_files (https://t.me/Zero_day_files)
 
+.serverdata@tutamail.com.bari
+serverdata@tutamail.com
+serverdata@cock.lu
+
 
 v7.0
 
@@ -117,3 +121,7 @@ Jami: Decryptionguy
 .decrypting@cock.li
 decrypting@cock.li
 decrypting@cyberfear.com
+
+.ELPACO-team
+el_kurva@tuta.io
+Telegram: @DataSupport911
