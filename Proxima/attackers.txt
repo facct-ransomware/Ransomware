@@ -97,7 +97,7 @@ AkashNetwork@tuta.io
 BlackShadow
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
 .Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack, .Sergey,
-.phoenix, .Hercul, .Dominik, .Elons, .Frank, .Key2030
+.phoenix, .Hercul, .Dominik, .Elons, .Frank, .Key2030, .Arthur
 Black.Shadow2000@onionmail.org
 Black.Shadow2000@cyberfear.com
 Black.Store2000@onionmail.org
@@ -134,6 +134,8 @@ Funders@cyberfear.COM
 Funders@firemail.de
 key2030@cock.li
 key2030@cyberfear.com
+Arthur@mailum.com
+Arthur.backup@keemail.me
 
 .uploaded (RA Group ?)
 http://pa32ymaeu62yo5th5mraikgw5fcvznnsiiwti42carjliarodltmqcqd.onion
