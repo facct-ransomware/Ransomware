@@ -33,6 +33,7 @@ import proxima_crypt
 
 RANSOM_EXTS = [
     '.SENATOR',
+    '.kasper',
 ]
 
 RANSOM_EXT_PREFIX = '.EMAIL=['
