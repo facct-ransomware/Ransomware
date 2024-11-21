@@ -67,6 +67,6 @@ rule Mimic_dropper
         ((uint16(0) == 0x5A4D) and (uint32(uint32(0x3C)) == 0x00004550)) and
         (filesize > 1500KB) and (filesize < 10000KB) and
         (
-            $h in (100000..(filesize - 1000000))
+            $h in (100000..200000)
         )
 }
