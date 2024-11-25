@@ -26,19 +26,13 @@ import sys
 import io
 import os
 import shutil
-import base64
-import xml.etree.ElementTree as ET
 from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
-from Crypto.Hash import SHA1
 from Crypto.Cipher import AES
+import loki_crypt
 
 
 RANSOM_EXT = '.BlackBit'
 
-
-# RSA
-RSA_KEY_SIZE = 256
 
 # AES GCM
 KEY_SIZE = 32
@@ -46,78 +40,9 @@ NONCE_SIZE = 12
 MAC_TAG_SIZE = 16
 
 
-# Metadata
-METADATA_SIZE = RSA_KEY_SIZE
-
-
 MIN_BIG_FILE_SIZE = 1572864
 
-
 ENC_BLOCK_SIZE = 0x40000
-
-
-def get_rsa_key_from_xml(key_xml_str: str, is_private: bool) -> RSA.RsaKey:
-    """Get RSA private key from XML string"""
-
-    root = ET.fromstring(key_xml_str)
-    if root.tag != 'RSAKeyValue':
-        return None
-
-    elem = root.find('Modulus')
-    if elem is None:
-        return None
-
-    n = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('Exponent')
-    if elem is None:
-        return None
-
-    e = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    if not is_private:
-        return RSA.construct((n, e))
-
-    elem = root.find('P')
-    if elem is None:
-        return None
-
-    p = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('Q')
-    if elem is None:
-        return None
-
-    q = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('DP')
-    if elem is None:
-        return None
-
-    dp = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('DQ')
-    if elem is None:
-        return None
-
-    dq = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('InverseQ')
-    if elem is None:
-        return None
-
-    iq = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    elem = root.find('D')
-    if elem is None:
-        return None
-
-    d = int.from_bytes(base64.b64decode(elem.text), byteorder='big')
-
-    if (dp != d % (p - 1)) or (dq != d % (q - 1)):
-        return None
-
-    return RSA.construct((n, e, d, p, q))
 
 
 def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
@@ -128,21 +53,24 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
         file_stat = os.fstat(f.fileno())
         file_size = file_stat.st_size
 
-        if file_size < METADATA_SIZE:
+        metadata_size = priv_key.size_in_bytes()
+
+        if file_size < metadata_size:
             return False
 
-        file_size -= METADATA_SIZE
+        file_size -= metadata_size
 
         # Read metadata
         f.seek(file_size)
-        enc_metadata = f.read(METADATA_SIZE)
+        enc_metadata = f.read(metadata_size)
 
         # Decrypt metadata (RSA OAEP)
-        decryptor = PKCS1_OAEP.new(priv_key, hashAlgo=SHA1)
-        try:
-            metadata = decryptor.decrypt(enc_metadata)
-        except ValueError:
+        metadata = loki_crypt.rsa_decrypt(enc_metadata, priv_key)
+        if not metadata:
+            print('RSA private key: Failed')
             return False
+
+        print('RSA private key: OK')
 
         if file_size < MIN_BIG_FILE_SIZE:
 
@@ -153,23 +81,26 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
                            KEY_SIZE + NONCE_SIZE + MAC_TAG_SIZE]
             cipher = AES.new(key, AES.MODE_GCM, nonce)
 
-            pos = 0
+            f.seek(0)
+
             size = file_size
             while size != 0:
 
+                # Read block
                 block_size = min(size, ENC_BLOCK_SIZE)
-                f.seek(pos)
                 enc_data = f.read(block_size)
-                if enc_data == b'':
+                bytes_read = len(enc_data)
+                if bytes_read == 0:
                     break
 
+                # Decrypt block (AES GCM)
                 data = cipher.decrypt(enc_data)
 
-                f.seek(pos)
+                # Write block
+                f.seek(-bytes_read, 1)
                 f.write(data)
 
-                size -= block_size
-                pos += block_size
+                size -= bytes_read
 
             try:
                 cipher.verify(tag)
@@ -179,9 +110,10 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
         else:
 
             # Spot encryption
-            block_positions = [0,
-                               (file_size // 2) - (ENC_BLOCK_SIZE // 2),
-                               file_size - ENC_BLOCK_SIZE]
+            block_positions = \
+                [ 0,
+                  (file_size // 2) - (ENC_BLOCK_SIZE // 2),
+                  file_size - ENC_BLOCK_SIZE ]
 
             key_data_pos = 0
 
@@ -192,17 +124,18 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
                 nonce = metadata[key_data_pos : key_data_pos + NONCE_SIZE]
                 key_data_pos += NONCE_SIZE
                 tag = metadata[key_data_pos : key_data_pos + MAC_TAG_SIZE]
-                cipher = AES.new(key, AES.MODE_GCM, nonce)
                 key_data_pos += MAC_TAG_SIZE
 
+                # Read block
                 f.seek(block_pos)
                 enc_data = f.read(ENC_BLOCK_SIZE)
 
-                try:
-                    data = cipher.decrypt_and_verify(enc_data, tag)
-                except ValueError:
+                # Decrypt block (AES GCM)
+                data = loki_crypt.aes_gcm_decrypt(enc_data, key, nonce, tag)
+                if not data:
                     return False
 
+                # Write block
                 f.seek(block_pos)
                 f.write(data)
 
@@ -225,7 +158,7 @@ with io.open('./rsa_privkey.xml', 'rt') as f:
     key_xml_str = f.read()
 
 # Get RSA private key from XML string
-priv_key = get_rsa_key_from_xml(key_xml_str, True)
+priv_key = loki_crypt.get_rsa_key_from_xml(key_xml_str, True)
 if (priv_key is None) or not priv_key.has_private():
     print('Error: Invalid RSA private key XML string')
     sys.exit(1)
@@ -240,5 +173,6 @@ shutil.copy(filename, new_filename)
 
 # Decrypt file
 if not decrypt_file(new_filename, priv_key):
+    os.remove(new_filename)
     print('Error: Failed to decrypt file')
     sys.exit(1)
