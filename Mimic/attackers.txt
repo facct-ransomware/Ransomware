@@ -29,6 +29,11 @@ serverdata@internet.ru
 .getmydata@tutamail.com.3000USD
 getmydata@tutamail.com
 
+.LOQUI
+ssupp@onionmail.org
+sssppp@tuta.io
+TOX ID: 3A381C022C1F235748B069D7B242A53CE6C74BBB4ED16C8FFAA1183B92C2E469DDD27F45A6EF
+
 
 v6.3
 
