@@ -115,6 +115,11 @@ fileopen
 fileopen@onionmail.org
 openfile@firemail.at
 
+fixmaster
+fixmaster@tutamail.com
+FixMaster01@onionmail.com
+Telegram: @Fixmaster_support
+
 GreenMonkey
 GreenMonkey@onionmail.org
 GreenMonkey@cyberfear.com
