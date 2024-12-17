@@ -43,6 +43,7 @@ RANSOM_EXTS = [
     '.Bpant',
     '.Thomas',
     '.innoken',
+    '.RealBer',
 ]
 
 
