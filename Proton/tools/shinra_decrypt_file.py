@@ -170,6 +170,7 @@ def decrypt_file(filename: str, priv_key_data: bytes,
             key_data = curve25519chacha20poly1305_decrypt(enc_key_data,
                                                           priv_key_data)
             if not key_data:
+                print('master X25519 private key: Failed')
                 return False
 
             s_priv_key_data = key_data[:X25519_KEY_SIZE]
@@ -181,7 +182,10 @@ def decrypt_file(filename: str, priv_key_data: bytes,
             pub_key_data = pub_key.public_bytes(Encoding.Raw,
                                                 PublicFormat.Raw)
             if pub_key_data != s_pub_key_data:
+                print('master X25519 private key: Failed')
                 return False
+
+            print('master X25519 private key: OK')
 
         else:
             s_priv_key_data = priv_key_data
@@ -191,7 +195,10 @@ def decrypt_file(filename: str, priv_key_data: bytes,
         metadata = curve25519chacha20poly1305_decrypt(enc_metadata,
                                                       s_priv_key_data)
         if not metadata:
+            print('session X25519 private key: Failed')
             return False
+
+        print('session X25519 private key: OK')
 
         # Key and nonce
         key = metadata[METADATA_KEY_POS:
@@ -203,12 +210,16 @@ def decrypt_file(filename: str, priv_key_data: bytes,
         orig_file_size, block_align = \
             struct.unpack_from('<QL', metadata, METADATA_FILE_SIZE_POS)
 
+        print('original file size:', orig_file_size)
+
         # Original file name
         name_pos = METADATA_FILE_NAME_POS
         for i in range(name_pos, len(metadata), 2):
             if (metadata[i] == 0) and (metadata[i + 1] == 0):
                 break
         orig_file_name = metadata[name_pos : i].decode('UTF-16LE')
+
+        print('original file name: \"%s\"' % orig_file_name)
 
         # Decrypt file data
         cipher = Cipher(algorithms.AES(key), modes.CTR(nonce))
@@ -217,6 +228,8 @@ def decrypt_file(filename: str, priv_key_data: bytes,
         if orig_file_size <= MAX_SMALL_FILE_SIZE:
 
             # Full
+            print('mode: full')
+
             f.seek(0)
             enc_data = f.read(orig_file_size)
 
@@ -228,6 +241,8 @@ def decrypt_file(filename: str, priv_key_data: bytes,
         else:
 
             # Spot
+            print('mode: spot')
+
             if is_important_file_ext(orig_file_name):
                 if orig_file_size < 0x600000:
                     num_blocks = 4
