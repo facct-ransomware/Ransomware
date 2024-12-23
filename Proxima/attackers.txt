@@ -98,6 +98,8 @@ blackpanther@mailum.com
 blackpanther@firemail.eu
 AkashNetwork@cyberfear.com
 AkashNetwork@tuta.io
+filerestore@mail.ee
+adminrestore@mail.ee
 
 BlackShadow
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
@@ -145,6 +147,9 @@ Arthur.backup@keemail.me
 Arthur@onionmail.org
 Thomas021@mailum.com
 Thomas021@tutanota.com
+blackpanther@firemail.eu
+blackpanther@mailum.com
+blackpanther@swissmail.org
 innokentiy@mailum.com
 innokentiy@onionmail.org
 Real.Berserk2000@mailum.com
