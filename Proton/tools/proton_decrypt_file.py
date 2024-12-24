@@ -151,7 +151,10 @@ def decrypt_file(filename: str,
             pub_key_data = pub_key.public_bytes(Encoding.Raw,
                                                 PublicFormat.Raw)
             if pub_key_data != s_pub_key_data:
+                print('master X25519 private key: Failed')
                 return False
+
+            print('master X25519 private key: OK')
 
         else:
             s_priv_key_data = priv_key_data
@@ -169,6 +172,8 @@ def decrypt_file(filename: str,
         if orig_file_size <= MAX_SMALL_FILE_SIZE:
 
             # Full
+            print('mode: full')
+
             f.seek(0)
             enc_data = f.read(orig_file_size)
 
@@ -180,6 +185,8 @@ def decrypt_file(filename: str,
         else:
 
             # Spot
+            print('mode: spot')
+
             if not is_important_file:
                 num_blocks = 3
             else:
