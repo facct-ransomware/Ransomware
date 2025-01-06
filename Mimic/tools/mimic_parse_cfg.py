@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# Copyright (c) 2024-2025 Andrey Zhdanov (rivitna)
 # https://github.com/rivitna
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -29,7 +29,7 @@ import errno
 import struct
 
 
-DEFAULT_VER = '6.3'
+DEFAULT_VER = '7.x'
 
 
 # Fields
@@ -417,7 +417,7 @@ def save_text_to_file(filename: str, s: str):
 # Main
 #
 if not (2 <= len(sys.argv) <= 3):
-    print('Usage:', sys.argv[0], 'filename [-v<VER>]')
+    print('Usage:', os.path.basename(sys.argv[0]), 'filename [-v<VER>]')
     print()
     print('supported versions:', ', '.join(SETTINGS.keys()))
     print('default version:', DEFAULT_VER)
