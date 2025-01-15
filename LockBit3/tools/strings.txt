@@ -25,6 +25,9 @@ appdata
 application data
 google
 mozilla
+temp
+lib
+xampp
 autorun.inf
 boot.ini
 bootfont.bin
@@ -105,5 +108,9 @@ pdb
 search-ms
 cnf
 cmtx
+xml
+inf
+ini
+readme
 WS2019
 DC-01
