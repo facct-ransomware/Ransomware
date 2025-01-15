@@ -76,7 +76,7 @@ METADATA_SIZE = 2 * XCHACHA_NONCE_SIZE + 4 * X25519_KEY_SIZE
 
 
 def is_important_file_ext(filename: str) -> bool:
-    """Check if the file extansion is important"""
+    """Check if the file extension is important"""
 
     return filename.endswith(IMPORTANT_FILE_EXTS)
 
