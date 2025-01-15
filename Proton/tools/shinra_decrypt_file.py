@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# Copyright (c) 2024-2025 Andrey Zhdanov (rivitna)
 # https://github.com/rivitna
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -39,14 +39,14 @@ import pure_blake3
 
 
 # Archive and database file extensions
-IMPORTANT_FILE_EXTS = [
+IMPORTANT_FILE_EXTS = (
     '.rar', '.zip', '.ckp', '.db3', '.dbf', '.dbc', 'dbs', '.dbt', '.dbv',
     '.frm', '.mdf', '.mrg', '.mwb', '.myd', '.ndf', '.qry', '.sdb', '.sdf',
     '.sql', '.tmd', '.wdb', '.bz2', '.tgz', '.lzo', '.db', '.7z', '.sqlite',
     '.accdb', '.sqlite3', '.sqlitedb', '.db-wal', '.db-shm', '.dacpac',
     '.1c', '.1cd', '.vmdk', '.vmem', '.iso', '.tar', '.fdb', '.csv', '.mdb',
     '.sl2', '.mpd', '.rsd', '.rsd', '.tib'
-]
+)
 
 
 # X25519
@@ -91,10 +91,7 @@ ENC_BLOCK_SIZE = 0x15000
 def is_important_file_ext(filename: str) -> bool:
     """Check if the file extansion is important"""
 
-    for ext in IMPORTANT_FILE_EXTS:
-        if filename.endswith(ext):
-            return True
-    return False
+    return filename.endswith(IMPORTANT_FILE_EXTS)
 
 
 def curve25519chacha20poly1305_decrypt(box_data: bytes,
