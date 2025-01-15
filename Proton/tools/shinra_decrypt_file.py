@@ -89,7 +89,7 @@ ENC_BLOCK_SIZE = 0x15000
 
 
 def is_important_file_ext(filename: str) -> bool:
-    """Check if the file extansion is important"""
+    """Check if the file extension is important"""
 
     return filename.endswith(IMPORTANT_FILE_EXTS)
 
