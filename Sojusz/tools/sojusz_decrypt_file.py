@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# Copyright (c) 2024-2025 Andrey Zhdanov (rivitna)
 # https://github.com/rivitna
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -69,12 +69,9 @@ def load_str_list(filename):
 
 
 def is_important_file_ext(filename: str, blackexts: list) -> bool:
-    """Check if the file extansion is important"""
+    """Check if the file extension is important"""
 
-    for ext in blackexts:
-        if filename.endswith(ext):
-            return True
-    return False
+    return filename.endswith(tuple(blackexts))
 
 
 def decrypt_file(filename: str,
