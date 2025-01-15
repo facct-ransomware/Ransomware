@@ -449,7 +449,7 @@ if not cfg_data:
 
     # Try to extract encrypted configuration data from overlay
     pe_file_size = get_pe_file_size(file_data)
-    if pe_file_size >= len(file_data):
+    if (pe_file_size is None) or (pe_file_size >= len(file_data)):
         print('Error: Configuration data not found.')
         sys.exit(1)
 
