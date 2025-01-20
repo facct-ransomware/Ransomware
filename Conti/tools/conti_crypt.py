@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# Copyright (c) 2024-2025 Andrey Zhdanov (rivitna)
 # https://github.com/rivitna
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -77,11 +77,14 @@ def rsa_construct_blob(blob: bytes) -> RSA.RsaKey:
 
 
 def rsa_decrypt(enc_data: bytes, priv_key: RSA.RsaKey) -> bytes:
-    """RSA decrypt data"""
+    """RSA PKCS#1 v1.5 decrypt data"""
 
     sentinel = os.urandom(SENTINEL_SIZE)
     cipher = PKCS1_v1_5.new(priv_key)
-    data = cipher.decrypt(enc_data[::-1], sentinel)
+    try:
+        data = cipher.decrypt(enc_data[::-1], sentinel)
+    except ValueError:
+        return None
     if data == sentinel:
         return None
     return data
