@@ -82,7 +82,10 @@ def rsa_decrypt(enc_data: bytes, priv_key: RSA.RsaKey) -> bytes:
 
     sentinel = os.urandom(SENTINEL_SIZE)
     cipher = PKCS1_v1_5.new(priv_key)
-    data = cipher.decrypt(enc_data[::-1], sentinel)
+    try:
+        data = cipher.decrypt(enc_data[::-1], sentinel)
+    except ValueError:
+        return None
     if data == sentinel:
         return None
     return data
