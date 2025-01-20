@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2024 Andrey Zhdanov (rivitna)
+# Copyright (c) 2024-2025 Andrey Zhdanov (rivitna)
 # https://github.com/rivitna
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -36,7 +36,7 @@ RANSOM_EXT = '.EXTEN'
 
 
 # RSA
-RSA_KEY_SIZE = 512
+MAX_RSA_KEY_SIZE = 512
 
 # ChaCha20
 CHACHA_KEY_SIZE = 32
@@ -45,7 +45,7 @@ CHACHA_ROUNDS = 8
 
 
 # Metadata
-METADATA_SIZE = RSA_KEY_SIZE + 12 + 10
+METADATA_SIZE = MAX_RSA_KEY_SIZE + 12 + 10
 
 
 HEADER_ENC_SIZE = 0x100000
@@ -66,7 +66,8 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
         metadata = f.read(METADATA_SIZE)
 
         # Decrypt ChaCha20 key and nonce
-        enc_key_data = metadata[:RSA_KEY_SIZE]
+        rsa_key_size = priv_key.size_in_bytes()
+        enc_key_data = metadata[:rsa_key_size]
         key_data = conti_crypt.rsa_decrypt(enc_key_data, priv_key)
         if not key_data:
             print('RSA private key: Failed')
@@ -79,10 +80,10 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
                          CHACHA_KEY_SIZE + CHACHA_NONCE_SIZE]
 
         orig_file_size, = struct.unpack_from('<Q', metadata,
-                                             RSA_KEY_SIZE + 14)
+                                             MAX_RSA_KEY_SIZE + 14)
         print('original file size:', orig_file_size)
 
-        enc_mode = metadata[RSA_KEY_SIZE + 12]
+        enc_mode = metadata[MAX_RSA_KEY_SIZE + 12]
 
         if enc_mode == 0x24:
 
@@ -107,7 +108,7 @@ def decrypt_file(filename: str, priv_key: RSA.RsaKey) -> bool:
             # partly
             print('mode: partly')
 
-            enc_percent = metadata[RSA_KEY_SIZE + 13]
+            enc_percent = metadata[MAX_RSA_KEY_SIZE + 13]
             if enc_percent == 10:
                 chunk_size = (orig_file_size // 100) * 4
                 num_chunks = 3
