@@ -105,7 +105,7 @@ BlackShadow
 .BLackSh, .BLackShadow, .BlackStore, .ZeroCool, .Black, .X, .Gomez,
 .Jarjets, .Off, .Daniel, .Xray, .Tisak, .SNet, .Jack, .Sergey,
 .phoenix, .Hercul, .Dominik, .Elons, .Frank, .Key2030, .Arthur, .Thomas,
-.Bpant, .innok, .innoken, .RealBer, .Xp64, .contac, .Contacto
+.Bpant, .innok, .innoken, .RealBer, .Xp64, .contac, .Contacto, .DebX6
 Black.Shadow2000@onionmail.org
 Black.Shadow2000@cyberfear.com
 Black.Store2000@onionmail.org
@@ -158,6 +158,8 @@ Windows.Xp64@mailum.com
 Windows.Xp64@onionmail.org
 Contacto@mailum.com
 Helpfile@generalmail.net
+Debian.X64@mailum.com
+Debian.X64@onionmail.org
 
 .uploaded (RA Group ?)
 http://pa32ymaeu62yo5th5mraikgw5fcvznnsiiwti42carjliarodltmqcqd.onion
