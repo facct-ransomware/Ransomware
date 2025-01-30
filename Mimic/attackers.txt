@@ -83,6 +83,13 @@ serverdata@internet.ru
 .getmydata@tutamail.com.3000USD
 getmydata@tutamail.com
 
+.getmydata@list.ru.3000USDAA
+getmydata@list.ru
+
+.getmydata@tutamail.com.5000USD
+getmydata@tutamail.com
+serverdata@internet.ru
+
 .LOQUI
 ssupp@onionmail.org
 sssppp@tuta.io
