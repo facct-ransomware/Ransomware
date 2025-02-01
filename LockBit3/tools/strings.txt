@@ -28,6 +28,12 @@ mozilla
 temp
 lib
 xampp
+internet explorer
+logs
+anydesk
+windows defender
+users
+drivers
 autorun.inf
 boot.ini
 bootfont.bin
@@ -111,6 +117,9 @@ cmtx
 xml
 inf
 ini
+txt
+pol
 readme
 WS2019
+WS2024
 DC-01
