@@ -71,23 +71,23 @@ SETTING_UNKNOWN = 0
 SETTING_BOOL = 1
 SETTING_UINT8 = 2
 
-SETTING_PRIORITY_MODIFY =   ( 'priority modify',        SETTING_BOOL )
-SETTING_SELF_DELETE =       ( 'self delete',            SETTING_BOOL )
-SETTING_LOG_LEVEL =         ( 'log level',              SETTING_UINT8 )
-SETTING_LOG_CHECKSUM =      ( 'log check sum',          SETTING_BOOL )
-SETTING_DISABLE_DEFENDER =  ( 'disable defender',       SETTING_BOOL )
-SETTING_SKIP_NETWORK =      ( 'skip network',           SETTING_BOOL )
-SETTING_ENCR_SHARE =        ( 'encrypt share',          SETTING_BOOL )
-SETTING_ENCR_NET_PRIO =     ( 'encrypt net prio',       SETTING_BOOL )
-SETTING_ENCR_NET_DRIVE =    ( 'encrypt net drive',      SETTING_BOOL )
-SETTING_ENCR_HID_FOLDERS =  ( 'encrypt hidden folders', SETTING_BOOL )
-SETTING_PERC_FOR_FILES =    ( '% for files [MB]',       SETTING_UINT8 )
-SETTING_WIPE_PARALLEL =     ( 'wipe parallel',          SETTING_BOOL )
-SETTING_WIPE_DRIVES =       ( 'wipe drives',            SETTING_BOOL )
-SETTING_DEL_LOG =           ( 'delete log at end',      SETTING_BOOL )
-SETTING_RESERVE_MODE =      ( 'reserve mode',           SETTING_UINT8 )
-SETTING_GUI_MODE =          ( 'gui mode',               SETTING_BOOL )
-SETTING_APPEND_KEY_TO_EXT = ( 'append key to ext',      SETTING_BOOL )
+SETTING_PRIORITY_MODIFY =   ( 'priority modify',       SETTING_BOOL )
+SETTING_SELF_DELETE =       ( 'self delete',           SETTING_BOOL )
+SETTING_LOG_LEVEL =         ( 'log level',             SETTING_UINT8 )
+SETTING_LOG_CHECKSUM =      ( 'log check sum',         SETTING_BOOL )
+SETTING_DISABLE_DEFENDER =  ( 'disable defender',      SETTING_BOOL )
+SETTING_SKIP_NETWORK =      ( 'skip network',          SETTING_BOOL )
+SETTING_ENCR_SHARE =        ( 'encrypt share',         SETTING_BOOL )
+SETTING_ENCR_NET_PRIO =     ( 'encrypt net prio',      SETTING_BOOL )
+SETTING_ENCR_NET_DRIVE =    ( 'encrypt net drive',     SETTING_BOOL )
+SETTING_ENCR_HID_DRIVES =   ( 'encrypt hidden drives', SETTING_BOOL )
+SETTING_PERC_FOR_FILES =    ( '% for files [MB]',      SETTING_UINT8 )
+SETTING_WIPE_PARALLEL =     ( 'wipe parallel',         SETTING_BOOL )
+SETTING_WIPE_DRIVES =       ( 'wipe drives',           SETTING_BOOL )
+SETTING_DEL_LOG =           ( 'delete log at end',     SETTING_BOOL )
+SETTING_RESERVE_MODE =      ( 'reserve mode',          SETTING_UINT8 )
+SETTING_GUI_MODE =          ( 'gui mode',              SETTING_BOOL )
+SETTING_APPEND_KEY_TO_EXT = ( 'append key to ext',     SETTING_BOOL )
 
 # Reserve mode
 RESERVE_MODES = {
@@ -140,7 +140,7 @@ SETTINGS_V54 = [
     SETTING_LOG_LEVEL,
     SETTING_RESERVE_MODE,
     SETTING_PERC_FOR_FILES,
-    SETTING_ENCR_HID_FOLDERS,
+    SETTING_ENCR_HID_DRIVES,
     SETTING_DEL_LOG,
 ]
 
@@ -157,7 +157,7 @@ SETTINGS_V70 = [
     SETTING_LOG_LEVEL,
     SETTING_RESERVE_MODE,
     SETTING_PERC_FOR_FILES,
-    SETTING_ENCR_HID_FOLDERS,
+    SETTING_ENCR_HID_DRIVES,
     SETTING_DEL_LOG,
     SETTING_APPEND_KEY_TO_EXT,
 ]
