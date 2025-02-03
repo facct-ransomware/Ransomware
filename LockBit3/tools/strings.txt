@@ -19,6 +19,7 @@ all users
 default
 microsoft
 sysvol
+netlogon
 scripts
 policies
 appdata
