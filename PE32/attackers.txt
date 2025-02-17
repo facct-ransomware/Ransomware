@@ -2,6 +2,10 @@ Ati
 help.file@zohomail.eu
 Telegram: @Qr_Ati
 
+dmc
+emmo.encrypt@onionmail.org
+Telegram: @Dmc_eze
+
 Armin
 bettercallarmin1@gmail.com
 Telegram: @decryptorsupport
