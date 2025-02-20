@@ -32,6 +32,7 @@ rule PE32
         $s16 = "struct RoundData with " ascii
         $s17 = "No key on aes_chain" ascii
         $s18 = "Encryption Context mismatch" ascii
+        $s19 = "IvChainBytes Invalid len" ascii
 
     condition:
         ((uint16(0) == 0x5A4D) and (uint32(uint32(0x3C)) == 0x00004550)) and
