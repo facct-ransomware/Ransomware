@@ -1,2 +1,2 @@
-https://www.facct.ru/blog/masque/
-https://habr.com/ru/companies/f_a_c_c_t/news/868858/
+https://www.f6.ru/blog/masque/
+https://habr.com/ru/companies/f6/news/868858/
