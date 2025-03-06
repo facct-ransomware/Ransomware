@@ -34,9 +34,13 @@ rule PE32
         $s18 = "Encryption Context mismatch" ascii
         $s19 = "IvChainBytes Invalid len" ascii
 
+        $h0 = { 4C 69 ?? AF 13 00 00 49 C1 ?? 18 4? 69 ?? FF F2 00 00 [4-8]
+                66 81 E9 01 0D }
+
     condition:
         ((uint16(0) == 0x5A4D) and (uint32(uint32(0x3C)) == 0x00004550)) and
         (
-            (5 of ($s*))
+            (5 of ($s*)) or
+            ((1 of ($h*)) and (3 of ($s*)))
         )
 }
