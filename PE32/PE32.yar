@@ -28,11 +28,12 @@ rule PE32
         $s12 = " (chunk_skip_v" ascii
         $s13 = "Slow max reached" ascii
         $s14 = "Base index exaustions" ascii
-        $s15 = "struct EncryptionContext with " ascii
-        $s16 = "struct RoundData with " ascii
-        $s17 = "No key on aes_chain" ascii
-        $s18 = "Encryption Context mismatch" ascii
-        $s19 = "IvChainBytes Invalid len" ascii
+        $s15 = "Unknown Extentions: \n" ascii
+        $s16 = "struct EncryptionContext with " ascii
+        $s17 = "struct RoundData with " ascii
+        $s18 = "No key on aes_chain" ascii
+        $s19 = "Encryption Context mismatch" ascii
+        $s20 = "IvChainBytes Invalid len" ascii
 
         $h0 = { 4C 69 ?? AF 13 00 00 49 C1 ?? 18 4? 69 ?? FF F2 00 00 [4-8]
                 66 81 E9 01 0D }
